@@ -1,0 +1,106 @@
+ℹ️ CARGO_BUILD_RUSTFLAGS=--remap-path-prefix=~/.cargo/registry/src= SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.1 cargo rustc --manifest-path=groth16-verifier/Cargo.toml --crate-type=cdylib --target=wasm32v1-none --release
+    Finished `release` profile [optimized] target(s) in 0.31s
+ℹ️ Build Summary:
+   Wasm File: target/wasm32v1-none/release/groth16_verifier.wasm (3788 bytes optimized (original size was 4327 bytes))
+   Wasm Hash: df541da68d667e57bcc235ffa6ea30ab800b24d32b92c5cf87781eb85084d87a
+   Wasm Size: 3788 bytes optimized (original size was 4327 bytes)
+   Exported Functions: 1 found
+     • verify_proof
+✅ Build Complete
+
+ℹ️ CARGO_BUILD_RUSTFLAGS=--remap-path-prefix=~/.cargo/registry/src= SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.1 cargo rustc --manifest-path=dkim-registry/Cargo.toml --crate-type=cdylib --target=wasm32v1-none --release
+    Finished `release` profile [optimized] target(s) in 0.11s
+ℹ️ Build Summary:
+   Wasm File: target/wasm32v1-none/release/dkim_registry.wasm (2629 bytes optimized (original size was 2936 bytes))
+   Wasm Hash: 53c56bba17b7c1487ef74cb29e8db5643490e3e73dbe08fb875b24c92732c565
+   Wasm Size: 2629 bytes optimized (original size was 2936 bytes)
+   Exported Functions: 3 found
+     • __constructor
+     • is_key_hash_revoked
+     • is_key_hash_valid
+✅ Build Complete
+
+ℹ️ CARGO_BUILD_RUSTFLAGS=--remap-path-prefix=~/.cargo/registry/src= SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.1 cargo rustc --manifest-path=approval-registry/Cargo.toml --crate-type=cdylib --target=wasm32v1-none --release
+    Finished `release` profile [optimized] target(s) in 0.10s
+ℹ️ Build Summary:
+   Wasm File: target/wasm32v1-none/release/approval_registry.wasm (8445 bytes optimized (original size was 9899 bytes))
+   Wasm Hash: 2694d478417ef4142af8a644121a0c484876b2773298c55a5eb79cff1cdc9058
+   Wasm Size: 8445 bytes optimized (original size was 9899 bytes)
+   Exported Functions: 3 found
+     • __constructor
+     • is_approved
+     • submit
+✅ Build Complete
+
+ℹ️ CARGO_BUILD_RUSTFLAGS=--remap-path-prefix=~/.cargo/registry/src= SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.1 cargo rustc --manifest-path=consumer/Cargo.toml --crate-type=cdylib --target=wasm32v1-none --release
+    Finished `release` profile [optimized] target(s) in 0.10s
+ℹ️ Build Summary:
+   Wasm File: target/wasm32v1-none/release/consumer.wasm (944 bytes optimized (original size was 1043 bytes))
+   Wasm Hash: c8a638b204398a9acf61ea7dd6ca785f1e50899356c8b15d6abd002e2f87210a
+   Wasm Size: 944 bytes optimized (original size was 1043 bytes)
+   Exported Functions: 2 found
+     • __constructor
+     • release_allowed
+✅ Build Complete
+
+ℹ️ Uploading contract WASM…
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 2cd52cce4349bd613f848896958e3e94b9ce6493a42b5a4d0b10976409815d1d
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/2cd52cce4349bd613f848896958e3e94b9ce6493a42b5a4d0b10976409815d1d
+ℹ️ Deploying contract using wasm hash df541da68d667e57bcc235ffa6ea30ab800b24d32b92c5cf87781eb85084d87a
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 3a8984a5790b5d764aa74f0bd5c5f15dc193adcd8757fdaf4b7603bd43757639
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/3a8984a5790b5d764aa74f0bd5c5f15dc193adcd8757fdaf4b7603bd43757639
+🔗 https://lab.stellar.org/r/testnet/contract/CBC3HTYPJLUZWZT5IYBO5P46ETMSL6GJ2D6C3U2PT5QEGPM2EBSAMBKZ
+✅ Deployed!
+ℹ️ Uploading contract WASM…
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 5e105cfb7bb10628bbe1c9cfb901bc0bfbb33fd31f94826c2d70ec87e9b82958
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/5e105cfb7bb10628bbe1c9cfb901bc0bfbb33fd31f94826c2d70ec87e9b82958
+ℹ️ Deploying contract using wasm hash 53c56bba17b7c1487ef74cb29e8db5643490e3e73dbe08fb875b24c92732c565
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: fc26acadc2cfc840a6b0a0c9487009432da726fd12d2094309baf12f9354dd48
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/fc26acadc2cfc840a6b0a0c9487009432da726fd12d2094309baf12f9354dd48
+🔗 https://lab.stellar.org/r/testnet/contract/CC4DAKFW53B7W6YFHPIEMHKEC7KLTUAA3BXIDG6PGZLYUPGBBZ7IEIMB
+✅ Deployed!
+ℹ️ Uploading contract WASM…
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 1d8bb66b8f18b3606ae83523208d725a6f7744d1b68ecb5a6d630d594e4dc260
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/1d8bb66b8f18b3606ae83523208d725a6f7744d1b68ecb5a6d630d594e4dc260
+ℹ️ Deploying contract using wasm hash 2694d478417ef4142af8a644121a0c484876b2773298c55a5eb79cff1cdc9058
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: d962296a9423ce7e3d504a9f53807b7251debc6ec1503bcc77f5b4b4addc3841
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/d962296a9423ce7e3d504a9f53807b7251debc6ec1503bcc77f5b4b4addc3841
+🔗 https://lab.stellar.org/r/testnet/contract/CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG
+✅ Deployed!
+ℹ️ Uploading contract WASM…
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 9d809c7344d6a1a174d9f2455abb560c4bd9b259e72bb29064ad268214725b8a
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/9d809c7344d6a1a174d9f2455abb560c4bd9b259e72bb29064ad268214725b8a
+ℹ️ Deploying contract using wasm hash c8a638b204398a9acf61ea7dd6ca785f1e50899356c8b15d6abd002e2f87210a
+ℹ️ Simulating transaction…
+ℹ️ Signing transaction: 8d7689e8ea23192c6c3a9e4efbe4b8b928196ff16be784a313a63a64e191aff7
+🌎 Sending transaction…
+✅ Transaction submitted successfully!
+🔗 https://stellar.expert/explorer/testnet/tx/8d7689e8ea23192c6c3a9e4efbe4b8b928196ff16be784a313a63a64e191aff7
+🔗 https://lab.stellar.org/r/testnet/contract/CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7
+✅ Deployed!
+verifier CBC3HTYPJLUZWZT5IYBO5P46ETMSL6GJ2D6C3U2PT5QEGPM2EBSAMBKZ
+dkim registry CC4DAKFW53B7W6YFHPIEMHKEC7KLTUAA3BXIDG6PGZLYUPGBBZ7IEIMB
+registry CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG
+consumer CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7
+wrote docs/deployments/testnet.json

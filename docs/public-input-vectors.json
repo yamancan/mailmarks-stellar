@@ -1,0 +1,42 @@
+{
+  "spec": "docs/template.md \u00a7Public inputs. Shared by the prover tests and the contract tests. Values are decimal BN254 Fr.",
+  "order": [
+    "wallet_0",
+    "wallet_1",
+    "project_id",
+    "artifact_hi",
+    "artifact_lo",
+    "dkim_key_hash",
+    "nullifier"
+  ],
+  "vectors": [
+    {
+      "fields": {
+        "projectId": "mailmarks",
+        "artifactSha256": "bd043655bf8a1a2e2c1a9d21f1892b8cb6dc04b9d84e52fa2b986917e02a41ac",
+        "wallet": "GA4TZT44MM6G4JHK4AFSHGDMXSHW3XJLLOEWCSBPA7LCPUT6FYXEX2KN"
+      },
+      "signals": {
+        "wallet_0": "125896165912425029065845831471430679911963549429673682115528661970099329098",
+        "wallet_1": "134807046783746033523313102276293700084841118936713223656537875234156445696",
+        "project_id": "193258641669606718034856200760782976098290794116745475260494087835495694336",
+        "artifact_hi": "251245962434574242464245779191239879564",
+        "artifact_lo": "243061896395524280876573210707919258028"
+      }
+    },
+    {
+      "fields": {
+        "projectId": "a",
+        "artifactSha256": "00000000000000000000000000000000000000000000000000000000000000ff",
+        "wallet": "GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H"
+      },
+      "signals": {
+        "wallet_0": "125903876035492140483761880850375877317578033696216159732122623655162172722",
+        "wallet_1": "127828628556083277923861694567809935244361206012083997876261025587792969728",
+        "project_id": "171384165283503279969579857572063096035265937996935038937795801525384118272",
+        "artifact_hi": "0",
+        "artifact_lo": "255"
+      }
+    }
+  ]
+}

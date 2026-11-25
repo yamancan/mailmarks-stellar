@@ -1,0 +1,23 @@
+node_modules/
+# Real emails and keys never enter git (privacy invariant)
+*.eml
+*.pem
+*.secret
+target/
+test_snapshots/
+# Proving artifacts (large; DEV ones live in circuits/build/dev)
+*.ptau
+*.zkey
+*.wtns
+*.r1cs
+# Saved Docker images (docs/docker.md)
+*.tar
+# Local secrets and OS files
+.env
+.env.*
+*.key
+.DS_Store
+evidence-batch/
+signed.txt
+signed-replay.txt
+.mailmarks-proof-*/

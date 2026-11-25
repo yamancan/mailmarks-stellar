@@ -1,0 +1,13 @@
+{
+  "name": "mailmarks-shared",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Browser-safe modules shared by the prover and the page: public-input encoding and the approval-proof.json format. No dependencies.",
+  "engines": {
+    "node": ">=24.22.3 <25"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

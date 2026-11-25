@@ -1,0 +1,30 @@
+# Only what the prover needs at run time (Dockerfile), file by file.
+*
+!shared/approval-proof.js
+!shared/encode.js
+!shared/package.json
+!prover/package.json
+!prover/package-lock.json
+!prover/.npmrc
+!prover/src/cli.js
+!prover/src/dkim.js
+!prover/src/encode.js
+!prover/src/inputs.js
+!prover/src/prove.js
+!prover/keys/trionlabs.dev-google.json
+!prover/keys/README.md
+!circuits/build/delivery/release_approval_js/release_approval.wasm
+!circuits/build/delivery/release_approval.zkey
+!circuits/build/delivery/release_approval_vk.json
+!circuits/build/dev/release_approval_test_js/release_approval_test.wasm
+!circuits/build/dev/dev.zkey
+!circuits/build/dev/dev_vk.json
+# The same exclusions as .gitignore, last so they win.
+**/*.eml
+**/*.pem
+**/*.secret
+**/*.ptau
+**/*.r1cs
+**/*.wtns
+**/*.sym
+**/*.part

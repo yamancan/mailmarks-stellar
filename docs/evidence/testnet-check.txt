@@ -1,0 +1,18 @@
+Testnet check after the valid approval, 21 Nov 2026, 2026-11-21T18:15Z (ledger 5852258)
+
+Simulated calls (stellar-cli 30.0.1, stellar contract invoke --send=no): read-only, nothing sent.
+Reference artifact: project mailmarks, sha256 bd043655bf8a1a2e2c1a9d21f1892b8cb6dc04b9d84e52fa2b986917e02a41ac
+(reference/hello-release-0.1.0.mjs). Valid approval: 179c5f492ad67c5ba541d56eb3826b467564517b1fc304ddc37bc45eb86f22a2 (docs/evidence/valid/).
+
+$ stellar contract invoke --id CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7 --source mailmarks --network testnet --send=no -- release_allowed --project_id mailmarks --artifact_hash bd043655bf8a1a2e2c1a9d21f1892b8cb6dc04b9d84e52fa2b986917e02a41ac
+true
+
+$ stellar contract invoke --id CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG --source mailmarks --network testnet --send=no -- is_approved --project_id mailmarks --artifact_hash bd043655bf8a1a2e2c1a9d21f1892b8cb6dc04b9d84e52fa2b986917e02a41ac
+true
+
+Control, the same hash with its last byte changed (ac -> ad), not approved:
+$ stellar contract invoke --id CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7 --source mailmarks --network testnet --send=no -- release_allowed --project_id mailmarks --artifact_hash bd043655bf8a1a2e2c1a9d21f1892b8cb6dc04b9d84e52fa2b986917e02a41ad
+false
+
+Consumer CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7 calls the approval registry CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG's is_approved (contracts/consumer/src/lib.rs).
+Before the valid approval both calls returned false (docs/deployments/README.md, "Checked after the deployment").

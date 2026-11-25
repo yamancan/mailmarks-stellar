@@ -1,0 +1,11 @@
+{
+  "domain": "trionlabs.dev",
+  "selector": "google",
+  "dnsName": "google._domainkey.trionlabs.dev",
+  "txt": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6JERKGbp74LcfQK9aVNckuFY2iufIOG/DUa4PNHuZTf1VfB/tikDd42u9En68Ut+gIeN62zkpZgqZJBgUaU6RvCCvIfA4rF+Ym7RDzMYprIj8w2pWnIawLgaEcn8lfOJskCW9xQj8hHLlgUkttku0z/zeYzUV8TdjHUmMAohj6a3Mo57y5v5MQxMVv+VW6zfwo+1jTA/BosHShf5ZPKITTmBBQ96drCuQusJlcmMfdRzioVlUBg6iNZojGpBVu/ngFKrRKowSU7EXQNmgxGnYmw3j+RTPLiTkMpfKuo7AQDmrE6R48Lz1rFIcsvSnmwS82VnpzWBuSXkIx+jLCTW+QIDAQAB",
+  "fetched": "2026-11-21",
+  "source": "dig +short TXT google._domainkey.trionlabs.dev @8.8.8.8 and @1.1.1.1 (identical answers; the two TXT strings joined), docs/dkim-key.md",
+  "modulusBits": 2048,
+  "exponent": 65537,
+  "keyHash": "13516658017839545759588237277145507208514199385895349779924259460902339631325"
+}

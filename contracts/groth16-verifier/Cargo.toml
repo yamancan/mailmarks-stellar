@@ -1,0 +1,17 @@
+[package]
+name = "groth16-verifier"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+description = "Copy of SDF soroban-examples bn254_verifier at 01a9a33dfd (see NOTICE)"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }

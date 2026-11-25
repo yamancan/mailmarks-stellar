@@ -1,0 +1,25 @@
+{
+  "name": "mailmarks-prover",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.3 <25"
+  },
+  "scripts": {
+    "prove": "node src/cli.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@zk-email/helpers": "6.4.2",
+    "snarkjs": "0.7.6"
+  },
+  "overrides": {
+    "snarkjs": "0.7.6",
+    "jsonpath": { "underscore": "1.13.8" },
+    "@ethersproject/providers": { "ws": "8.21.0" }
+  },
+  "devDependencies": {
+    "@stellar/stellar-sdk": "17.4.0"
+  }
+}

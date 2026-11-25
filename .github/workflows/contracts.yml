@@ -1,0 +1,35 @@
+# Contract tests (the six rejection tests and the consumer-call test, docs/scope.md): by hand, and on pull requests to
+# main. Nothing else runs by itself. Nothing deploys and no secret is read. Actions are pinned to commit SHAs.
+name: contracts
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Rust 1.99.1 and wasm32v1-none (docs/toolchain.md)
+        run: |
+          rustup toolchain install 1.99.1 --profile minimal --target wasm32v1-none
+          rustup default 1.99.1
+          rustc --version && cargo --version
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            contracts/target
+          key: contracts-${{ runner.os }}-1.99.1-${{ hashFiles('contracts/Cargo.lock') }}
+          restore-keys: contracts-${{ runner.os }}-1.99.1-
+      - name: cargo test
+        run: cargo test --locked --manifest-path contracts/Cargo.toml

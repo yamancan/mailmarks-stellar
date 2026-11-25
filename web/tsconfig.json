@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src",
+    "test",
+    "scripts",
+    "e2e",
+    "vite.config.ts",
+    "playwright.config.ts"
+  ]
+}

@@ -1,0 +1,27 @@
+[package]
+name = "approval-registry"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+groth16-verifier = { path = "../groth16-verifier" }
+dkim-registry = { path = "../dkim-registry" }
+consumer = { path = "../consumer" }
+ark-bn254 = "0.6"
+ark-ff = "0.6"
+ark-ec = "0.6"
+ark-groth16 = "0.6"
+ark-relations = "0.6"
+ark-crypto-primitives = { version = "0.6", features = ["snark"] }
+ark-std = { version = "0.6", features = ["std"] }
+serde_json = "1"

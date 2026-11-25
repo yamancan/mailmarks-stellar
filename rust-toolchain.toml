@@ -1,0 +1,4 @@
+# Pinned for the contracts: rustup installs this toolchain and the Stellar WASM target on the first cargo run here.
+[toolchain]
+channel = "1.99.1"
+targets = ["wasm32v1-none"]

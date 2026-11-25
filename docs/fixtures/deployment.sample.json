@@ -1,0 +1,9 @@
+{
+  "note": "Test fixture for the page (web/e2e); not a real deployment. The real one is docs/deployments/testnet.json.",
+  "rpcUrl": "https://soroban-testnet.stellar.org",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "registry": "CAAQEAYEAUDAOCAJBIFQYDIOB4IBCEQTCQKRMFYYDENBWHA5DYPSBFLM",
+  "projectId": "mailmarks",
+  "senderDomain": "trionlabs.dev",
+  "expert": "https://stellar.expert/explorer/testnet"
+}

@@ -1,0 +1,15 @@
+{
+  "rpcUrl": "https://soroban-testnet.stellar.org",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "registry": "CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG",
+  "projectId": "mailmarks",
+  "senderDomain": "trionlabs.dev",
+  "expert": "https://stellar.expert/explorer/testnet",
+  "contracts": {
+    "verifier": "CBC3HTYPJLUZWZT5IYBO5P46ETMSL6GJ2D6C3U2PT5QEGPM2EBSAMBKZ",
+    "dkimRegistry": "CC4DAKFW53B7W6YFHPIEMHKEC7KLTUAA3BXIDG6PGZLYUPGBBZ7IEIMB",
+    "registry": "CDR4M7C37IVMBLUWUFQ4J5HCZA5AXF2ZQAA34J43JL4SKEMB3IO3F6AG",
+    "consumer": "CATTC25PAVDGVVLGOPER7TU54AGFRXTR3S6KFUECRUSV2X2DX4ENAXS7"
+  },
+  "deployed": "2026-11-20T23:50:54.114Z"
+}
