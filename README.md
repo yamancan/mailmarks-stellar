@@ -4,15 +4,15 @@
 
 **Prove an email on Stellar, without showing it.**
 
-For developers who want an on-chain fact from a signed email. Live on Stellar testnet.
+For developers who want an on-chain fact from a signed email. Live on Stellar testnet for one sender,
+`mintmarks@trionlabs.dev`; anyone can prove a test email locally.
 
-**[Run it from nothing →](#run-it)**
+**[Prove a test email locally →](#run-it)**
 
 </div>
 
-You prove on your own computer, offline, that a real email arrived from a known sender with an exact Subject line.
-Only a zero-knowledge proof leaves the machine. A Stellar contract checks it and records the fact; the email, its
-headers and its body never do.
+Prove locally that a DKIM-signed email contains the configured `From` address and the exact approval `Subject`. The
+proof and seven public values go to Stellar when you record the approval. The original email stays on your computer.
 
 ```text
 email.eml            ──  npm run prove (offline)   ──▶  approval-proof.json
@@ -22,16 +22,16 @@ any contract         ──  is_approved(project, sha256)  ──▶  true
 
 <sub>The three steps, from a saved `.eml` file to a contract that reads the result.</sub>
 
-The email is the signature. Mail providers already sign every message with DKIM; mailmarks turns that signature into
-a Groth16 proof a Soroban contract can verify, so an email you already know how to send becomes something a contract
-can trust. There is no backend and no upload.
+Mailmarks turns the mail provider’s DKIM signature into a Groth16 proof that a Soroban contract can verify.
+The contract records the approval after verifying the proof and the signature of the wallet named in the `Subject`.
 
 | Try it | See it working | Check it yourself |
 |---|---|---|
-| [Run it](#run-it) | [The recorded email proof on testnet](https://stellar.expert/explorer/testnet/tx/179c5f492ad67c5ba541d56eb3826b467564517b1fc304ddc37bc45eb86f22a2) | `cargo test --locked --manifest-path contracts/Cargo.toml` |
+| [Prove a test email](#run-it) | [The recorded email proof on testnet](https://stellar.expert/explorer/testnet/tx/179c5f492ad67c5ba541d56eb3826b467564517b1fc304ddc37bc45eb86f22a2) | `cargo test --locked --manifest-path contracts/Cargo.toml` |
 
 **Reading the code, or sending an agent to read it?** The hard part is the circuit,
-[`circuits/approval.circom`](circuits/approval.circom): DKIM over the signed header, then the From and Subject read
+[`circuits/approval.circom`](circuits/approval.circom) (deployed through
+[`circuits/release_approval.circom`](circuits/release_approval.circom)): DKIM over the signed header, then the From and Subject read
 at offsets the circuit checks itself. The prover is [`prover/src/prove.js`](prover/src/prove.js); the contract that
 checks and records is [`contracts/approval-registry/src/lib.rs`](contracts/approval-registry/src/lib.rs) (`submit`,
 `is_approved`); the page is [`web/src/flow.ts`](web/src/flow.ts). Every test command is under [Tests](#tests).
@@ -48,7 +48,8 @@ One email from the configured sender with this Subject proves that the sender vo
 in that project, and that only that Stellar wallet may record it. Once recorded, any contract asks
 `is_approved(project_id, artifact_hash)`; [`contracts/consumer`](contracts/consumer/src/lib.rs) shows the call.
 
-The configured sender is `mintmarks@trionlabs.dev` (DKIM domain `trionlabs.dev`). The rules for each field, the
+The configured sender is `mintmarks@trionlabs.dev` (DKIM domain `trionlabs.dev`; the name "mintmarks" is
+deliberate and lives only in this address). The rules for each field, the
 reference email and the seven public values are in [docs/template.md](docs/template.md).
 
 <details>
@@ -56,7 +57,7 @@ reference email and the seven public values are in [docs/template.md](docs/templ
 
 - The configured sender and its DKIM provider are trusted to send the email. The record proves what the signed
   Subject says; it says nothing about the file's quality.
-- Public: the seven public values (wallet, project, file hash, DKIM key hash, nullifier) and the transaction.
+- Public: the seven public values (wallet in two parts, project, file hash in two parts, DKIM key hash, nullifier) and the transaction.
 - The nullifier comes from the email's DKIM signature, so one email records once. It also means the sender, the
   provider and anyone holding the email can link it to the record.
 - The Groth16 key comes from one phase-2 contribution. A public ceremony and an audit come before any mainnet use.
@@ -119,7 +120,7 @@ Save the received message as an `.eml` file (your mail client's "Download messag
 npm run prove --prefix prover -- email.eml       # writes approval-proof.json next to the email
 ```
 
-Or in Docker with networking off, with an image built from this repository ([docs/prover.md](docs/prover.md), "Docker"):
+Or in Docker with networking off, with an image built from this repository ([docs/docker.md](docs/docker.md), "Build and run"):
 
 ```sh
 docker run --rm --pull=never --platform linux/amd64 --network none --user "$(id -u):$(id -g)" \
@@ -155,7 +156,7 @@ The page talks only to the Stellar RPC, Friendbot (after **Get Free XLM**) and t
 ### 5. Check it
 
 **Check** on the start screen takes the file (hashed on your computer) or its checksum and shows **Approved.** with
-who sent the email and who recorded it. A contract asks the same with `is_approved(project_id, artifact_hash)`.
+the sender domain and the wallet that recorded it. A contract asks the same with `is_approved(project_id, artifact_hash)`.
 
 <details>
 <summary>The other screens</summary>
@@ -178,12 +179,14 @@ npx --prefix web playwright install chromium && npm run e2e --prefix web   # pag
 cargo test --locked --manifest-path contracts/Cargo.toml   # contracts, rejections included
 ```
 
-[`.github/workflows/contracts.yml`](.github/workflows/contracts.yml) runs the cargo tests on pull requests to `main`.
+[The contract workflow](https://github.com/yamancan/mailmarks-stellar/actions/workflows/contracts.yml) runs
+`cargo test --locked` on pull requests to `main` and on manual runs.
 
 ## Evidence
 
-All on Stellar testnet, deployed 20 Nov 2026 (UTC). Testnet resets on 16 Dec 2026; the full RPC and Horizon records in
-[docs/evidence/](docs/evidence/README.md) stay.
+The contracts were deployed to Stellar testnet on 20 Nov 2026 (UTC). The archived RPC and Horizon records in
+[docs/evidence/](docs/evidence/README.md) remain available after a
+[testnet reset](https://developers.stellar.org/docs/networks#testnet-and-futurenet-data-reset).
 
 | Claim | Evidence |
 |---|---|

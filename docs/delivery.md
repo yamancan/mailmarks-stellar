@@ -1,8 +1,8 @@
 # Delivery
 
 How each deliverable of the scope (docs/scope.md, from the statement of work, "SOW" below) is met, and where to
-check it. Written 21 Nov 2026. The contracts are on testnet since 21 Nov (docs/deployments/README.md). **Waiting** marks
-evidence that does not exist yet. Nothing marked Waiting is filled in here in advance.
+check it. Written 21 Nov 2026. The contracts were deployed to testnet on 20 Nov 2026 (UTC).
+[Deployment records](deployments/README.md)
 
 ## Deliverable 1: circuit and local prover
 
@@ -43,7 +43,7 @@ evidence that does not exist yet. Nothing marked Waiting is filled in here in ad
 | Persistent storage, TTL and restoration | docs/contract-storage.md; `archived_entries_after_ttl` | Done |
 | Typed errors, resource profiling | `Error` in `lib.rs`; docs/contract-storage.md (`wasm_submit_resources`) | Done |
 | Six rejection tests; no rejection creates a record | `contracts/approval-registry/tests/registry.rs`: `replay_is_rejected` (with a re-randomized proof), `wrong_project_is_rejected`, `wrong_artifact_is_rejected`, `wrong_wallet_is_rejected`, `unregistered_key_is_rejected`, `tampered_proof_is_rejected` (false return and malformed proof); each checks no new entry | Done |
-| Tests passing on GitHub | `.github/workflows/contracts.yml` runs `cargo test` on pull requests to main and by hand; the full local output: docs/evidence/contract-tests/cargo-test.txt | **Waiting**: runs on the public repository |
+| Tests passing on GitHub | [Contract test runs](https://github.com/yamancan/mailmarks-stellar/actions/workflows/contracts.yml) | [Local test results](evidence/contract-tests/cargo-test.txt) |
 | Stellar Expert links: final contracts | docs/deployments/README.md (four contracts, eight transactions) | Done |
 | Stellar Expert links: one valid approval, five rejections | docs/evidence/README.md: wrong project #3, unregistered key #5, wrong artifact #8, tampered proof #8, replay #6; the valid approval `179c5f49…6f22a2` | Done |
 
@@ -59,10 +59,6 @@ evidence that does not exist yet. Nothing marked Waiting is filled in here in ad
 | Reference approval sent through a real DKIM provider and recorded from the page | The owner's email from `mintmarks@trionlabs.dev`, Google Workspace DKIM (docs/dkim-key.md), proved on the Mac (`docs/fixtures/approval-proof.json`) and recorded from the page with the owner's wallet on 21 Nov: docs/evidence/valid/; `release_allowed` true through the consumer: docs/evidence/testnet-check.txt | Done |
 | Clean Linux machine, full README flow on the final deployment | docs/setup.md, "Run on the final deployment with the owner's email": a new linux/amd64 container with the delivered tree: install, offline proof of the owner's email (public signals equal to the recorded proof's) and `is_approved` true from the container; the page step (record) was done on the Mac, docs/evidence/valid/ | Deviation: clean machine without the page step |
 | One valid approval and five rejected transactions with Stellar Expert links | docs/evidence/ (records written by `web/scripts/evidence.ts`): the valid approval from the page, four rejections and the replay (#6), each with its Stellar Expert link, RPC and Horizon records and screenshot | Done |
-
-## Waiting
-
-- The contract tests on GitHub: they run on the public repository (`.github/workflows/contracts.yml`).
 
 ## Deviations from the SOW
 

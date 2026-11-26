@@ -70,7 +70,7 @@ the manual fallback is `stellar contract restore` for the item, then retry.
 | Approval record (`Approval(artifact_hash)`) | registry, persistent | network maximum | `stellar contract restore --id <registry> --key-xdr <key> --durability persistent` |
 | Nullifier (`Nullifier(nullifier)`) | registry, persistent | network maximum | same, with the nullifier key |
 | Registry config + verifying key | registry, instance | maximum at deploy; each `submit` extends it back to the maximum when it has fallen below maximum − 1 day | `stellar contract restore --id <registry>` (instance) |
-| DKIM key entry | DKIM registry, persistent | maximum at deploy; afterwards OZ's `is_key_hash_valid` extends it on read only when it is below 29 days, and then to 30 days (stellar-contracts v0.8.0 `dkim_registry/mod.rs:219-222`, `storage.rs:50`). Testnet resets on 16 Dec 2026, so this does not affect the delivery | `stellar contract restore --id <dkim-registry> --key-xdr <key> --durability persistent` |
+| DKIM key entry | DKIM registry, persistent | maximum at deploy; afterwards OZ's `is_key_hash_valid` extends it on read only when it is below 29 days, and then to 30 days (stellar-contracts v0.8.0 `dkim_registry/mod.rs:219-222`, `storage.rs:50`) | `stellar contract restore --id <dkim-registry> --key-xdr <key> --durability persistent` |
 | DKIM registry instance | DKIM registry, instance | maximum at deploy | `stellar contract restore --id <dkim-registry>` |
 | Verifier instance | verifier, instance | network default | `stellar contract restore --id <verifier>` |
 | Consumer instance (registry address) | consumer, instance | network default, never extended | `stellar contract restore --id <consumer>` |
